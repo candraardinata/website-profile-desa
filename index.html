@@ -140,6 +140,59 @@
       transition: 0.4s;
     }
 
+    /* ✅ Navbar biar rapi di HP */
+#menu {
+  position: absolute;
+  top: 64px; /* sejajar dengan header */
+  left: 0;
+  width: 100%;
+  background: white;
+  padding: 10px 0;
+  z-index: 50;
+}
+
+#menu ul {
+  flex-direction: column;
+  gap: 0;
+}
+
+#menu ul li {
+  border-bottom: 1px solid #eee;
+}
+
+#menu ul li a {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: #333;
+}
+
+/* ✅ di laptop balik normal */
+@media (min-width: 768px) {
+  #menu {
+    position: static;
+    width: auto;
+    background: transparent;
+    padding: 0;
+  }
+
+  #menu ul {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  #menu ul li {
+    border: none;
+  }
+}
+
+/* ✅ teks hero lebih jelas */
+#Beranda h1, 
+#Beranda p {
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
 
   </style>
 </head>
@@ -162,8 +215,8 @@
     <span class="w-6 h-0.5 bg-gray-800"></span>
   </button>
 
-   <nav id="menu" class="hidden md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-3 
-                     text-gray-700 text-sm font-medium transition-all duration-300 ease-in-out">
+  <nav id="menu" class="hidden md:flex text-gray-700 text-sm font-medium transition-all duration-300 ease-in-out">
+
     <ul>
       <li><a href="#Beranda" class="block px-3 py-2 rounded-md hover:bg-blue-600 hover:text-white">Beranda</a></li>
       <li><a href="#Sejarah" class="block px-3 py-2 rounded-md hover:bg-blue-600 hover:text-white">Sejarah</a></li>
