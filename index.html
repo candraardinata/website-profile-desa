@@ -109,10 +109,10 @@
       line-height: 1.5;
       text-align: justify;
     }
-
-    .max-w-xl { color: #1E293B; }
-
-     nav ul { 
+    
+    .max-w-xl { color: #1E293B; 
+    }
+    nav ul { 
       list-style: none; display: flex; gap: 20px; 
     } 
 
@@ -123,17 +123,26 @@
     nav ul li a:hover { 
       color: #0066ff; 
     }
+    
+     /* Style tombol */
+    .menu-btn {
+      display: inline-block;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .menu-btn span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px 0;
+      background-color: #333;
+      transition: 0.4s;
+    }
+
+
   </style>
 </head>
-<script>
-  const btn = document.getElementById("menu-btn");
-  const menu = document.getElementById("menu");
-
-  btn.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-    menu.classList.toggle("flex");
-  });
-</script>
 <body class="bg-white">
   <header class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
     <div class="flex items-center space-x-3">
@@ -145,16 +154,25 @@
         <p class="text-xs text-gray-500 leading-tight">Kec. Dukun, Kab. Gresik</p>
       </div>
     </div>
-   <nav class="space-x-3 text-gray-700 text-sm font-medium">
-     <ul>
-      <li><a href="#Beranda" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Beranda</a></li>
-      <li><a href="#Sejarah" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Sejarah</a></li>
-      <li><a href="#Berita" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Berita</a></li>
-      <li><a href="#Demografi" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Demografi</a></li>
-      <li><a href="#Fasilitas" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Fasilitas</a></li>
-      <li><a href="#Kontak" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Kontak</a></li>
-     </ul>
-    </nav>
+
+     <!-- Tombol Hamburger (muncul di mobile) -->
+  <button id="menu-btn" class="md:hidden flex flex-col space-y-1.5">
+    <span class="w-6 h-0.5 bg-gray-800"></span>
+    <span class="w-6 h-0.5 bg-gray-800"></span>
+    <span class="w-6 h-0.5 bg-gray-800"></span>
+  </button>
+
+   <nav id="menu" class="hidden md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-3 
+                     text-gray-700 text-sm font-medium transition-all duration-300 ease-in-out">
+    <ul>
+      <li><a href="#Beranda" class="block px-3 py-2 rounded-md hover:bg-blue-600 hover:text-white">Beranda</a></li>
+      <li><a href="#Sejarah" class="block px-3 py-2 rounded-md hover:bg-blue-600 hover:text-white">Sejarah</a></li>
+      <li><a href="#Berita" class="block px-3 py-2 rounded-md hover:bg-blue-600 hover:text-white">Berita</a></li>
+      <li><a href="#Demografi" class="block px-3 py-2 rounded-md hover:bg-blue-600 hover:text-white">Demografi</a></li>
+      <li><a href="#Fasilitas" class="block px-3 py-2 rounded-md hover:bg-blue-600 hover:text-white">Fasilitas</a></li>
+      <li><a href="#Kontak" class="block px-3 py-2 rounded-md hover:bg-blue-600 hover:text-white">Kontak</a></li>
+    </ul>
+  </nav>
 
 
   </header>
@@ -609,7 +627,14 @@
       </div>
     </div>
   </footer>
+
+  <script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu');
+
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
 </body>
 </html>
-
-
