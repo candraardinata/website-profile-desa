@@ -1,7 +1,131 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Desa Baron</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+ <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    .container {
+      width: 45%;              /* lebih kecil, biar bisa 2 kolom */
+      background-color: #111;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(255,255,255,0.1);
+    }
+    .container img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .content h2 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+
+    .content p {
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: justify; /* ✅ rata kanan kiri */
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 100%; /* kalau di HP jadi 1 kolom */
+      }
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-bottom: 40px; /* kasih jarak biar tidak nempel bagian bawah */
+    }
+
+    @media (min-width: 768px) {
+      .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .news-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card-content h2 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1E293B;
+    }
+
+    .card-content p {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.5;
+      text-align: justify;
+    }
+
+    .max-w-xl { color: #1E293B; }
+
+
+  </style>
+</head>
+<script>
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("menu");
+
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+    menu.classList.toggle("flex");
+  });
+</script>
 <body class="bg-white">
-  <!-- ✅ Header baru responsif -->
-  <header class="flex items-center justify-between px-6 py-4 border-b border-gray-200 relative">
-    <!-- Logo -->
+  <header class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
     <div class="flex items-center space-x-3">
       <div class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white font-semibold text-lg">
         DB
@@ -11,19 +135,467 @@
         <p class="text-xs text-gray-500 leading-tight">Kec. Dukun, Kab. Gresik</p>
       </div>
     </div>
-
-    <!-- Tombol hamburger (muncul di HP) -->
-    <button id="menu-btn" class="block md:hidden text-gray-700 focus:outline-none">
-      <i class="fas fa-bars text-xl"></i>
-    </button>
-
-    <!-- Menu navbar -->
-    <nav id="menu" class="hidden md:flex space-x-3 text-gray-700 text-sm font-medium absolute md:static top-full left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none flex-col md:flex-row">
-      <a href="#Beranda" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Beranda</a>
-      <a href="#Sejarah" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Sejarah</a>
-      <a href="#Berita" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Berita</a>
-      <a href="#Demografi" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Demografi</a>
-      <a href="#Fasilitas" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Fasilitas</a>
-      <a href="#Kontak" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Kontak</a>
+   <nav class="space-x-3 text-gray-700 text-sm font-medium">
+  <a href="#Beranda" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Beranda</a>
+  <a href="#Sejarah" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Sejarah</a>
+  <a href="#Berita" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Berita</a>
+  <a href="#Demografi" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Demografi</a>
+  <a href="#Fasilitas" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Fasilitas</a>
+  <a href="#Kontak" class="px-3 py-2 rounded-md transition duration-300 hover:bg-blue-600 hover:text-white">Kontak</a>
     </nav>
+
+
   </header>
+
+  <section id="Beranda" style="
+  position: relative;
+  background-image: url('balai_desa.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 4rem 1rem;
+  min-height: 600px; /* bisa disesuaikan */">
+    <h1 class="text-3xl sm:text-4xl font-extrabold mb-3 leading-tight">
+      Selamat Datang di Desa Baron
+    </h1>
+    <p class="text-base sm:text-lg mb-10 max-w-xl mx-auto">
+      Desa yang terletak di perbatasan Gresik-Lamongan, dilalui Sungai Bengawan Solo
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-xl mx-auto">
+      <div class="bg-blue-500 bg-opacity-40 rounded-md px-6 py-4 w-48 sm:w-auto">
+        <p class="text-2xl font-extrabold leading-none">2,464</p>
+        <p class="text-xs font-semibold mt-1">Total Penduduk</p>
+      </div>
+      <div class="bg-blue-500 bg-opacity-40 rounded-md px-6 py-4 w-48 sm:w-auto">
+        <p class="text-2xl font-extrabold leading-none">465</p>
+        <p class="text-xs font-semibold mt-1">Kepala Keluarga</p>
+      </div>
+      <div class="bg-blue-500 bg-opacity-40 rounded-md px-6 py-4 w-48 sm:w-auto">
+        <p class="text-2xl font-extrabold leading-none">510.19</p>
+        <p class="text-xs font-semibold mt-1">Luas Wilayah (Ha)</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <h1 id="Sejarah" class="text-center text-2xl font-semibold text-slate-900 mb-6 relative inline-block">
+      Sejarah Desa Baron
+      <span class="block h-1 w-16 bg-blue-600 mt-2 mx-auto rounded"></span>
+    </h1>
+    <div class="bg-blue-100 rounded-lg p-6 flex gap-4">
+      <div class="flex-shrink-0 flex items-start pt-1">
+        <div class="bg-blue-600 text-white rounded-full p-3">
+          <i class="fas fa-book text-lg"></i>
+        </div>
+      </div>
+      <div class="text-slate-800 text-sm leading-relaxed">
+        <p class="font-semibold mb-2">Asal Usul Nama Baron</p>
+        <p class="mb-4">
+          Asal-usul nama Baron berawal dari seorang musafir bernama
+          <strong>Bahron,</strong> seorang alim yang menetap di wilayah tersebut. Ia dikenal masyarakat karena kepintarannya dalam memberikan pengajian dan pengobatan.
+        </p>
+        <p class="mb-4">
+          Namun, karena logat Jawa sulit mengucapkan nama "Bahron" dengan fasih, sebutannya berubah menjadi
+          <strong>"Baron".</strong>
+        </p>
+        <p>
+          Bahron wafat tanpa keturunan, dan ia menjadi orang pertama yang dimakamkan di wilayah itu. Setelahnya, banyak warga bermukim di sekitar rumahnya, yang kemudian menjadi cikal bakal berdirinya Desa Baron.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <section id="Berita">
+  <h2>Berita Desa</h2>
+  <div class="news-grid">
+
+    <div class="card">
+      <img src="maulid.jpg" alt="Berita 1">
+      <div class="card-content">
+        <h2>Peringatan Maulid Nabi Muhammad SAW di Masjid Al-Mubarak</h2>
+        <p>Baron, Gresik – 06 September 2025
+           Remaja Masjid Al-Mubarok bersama masyarakat Desa Baron, Kecamatan Dukun, Kabupaten Gresik, 
+           menggelar peringatan Maulid Nabi Muhammad SAW dengan meriah. Acara dipusatkan di halaman masjid, 
+           dihadiri ratusan jamaah dari berbagai kalangan.
+
+           Suasana penuh keceriaan tampak ketika warga berebut hadiah dan berkah yang digantung di atas tali. 
+           Selain memperingati kelahiran Nabi Muhammad SAW, kegiatan ini juga menjadi sarana mempererat silaturahmi,
+           menumbuhkan semangat kebersamaan, serta meneladani akhlak Rasulullah.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="pembukaan_KKN.jpg" alt="Berita 2">
+      <div class="card-content">
+        <h2>Pembukaan KKN Universitas Qomaruddin di Desa Baron</h2>
+        <p>Baron, Gresik – 20 Agustus 2025
+           Mahasiswa Universitas Qomaruddin resmi membuka kegiatan Kuliah Kerja Nyata (KKN) di Desa Baron,
+           Kecamatan Dukun. Acara yang dihadiri Kepala Desa, perangkat, dan masyarakat ini mengusung tema “Penguatan Ketahanan Pangan Keluarga melalui Pekarangan Pangan Lestari (P2L)”.
+
+           Program KKN ini bertujuan mendukung kemandirian pangan keluarga melalui pemanfaatan pekarangan secara berkelanjutan, 
+           sekaligus mempererat sinergi antara mahasiswa, pemerintah desa, dan masyarakat..</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="seminar_kep_pemuda.jpg" alt="Berita 3">
+      <div class="card-content">
+        <h2>Seminar Keorganisasian dan Kepemudaan di Desa Baron</h2>
+        <p>Pada 11 September 2025, mahasiswa KKN Universitas Qomaruddin Gresik mengadakan Seminar Keorganisasian dan Kepemudaan di Desa Baron, 
+           Kecamatan Dukun, Gresik. Acara ini diikuti oleh Karang Taruna, Remaja Masjid, pemuda desa, serta Mahasiswa KKN T Unesa.
+
+           Kegiatan bertujuan memperkuat peran organisasi pemuda sebagai wadah pengembangan diri, kebersamaan,
+           dan kontribusi nyata bagi pembangunan desa.</p>
+      </div>
+    </div>
+
+     <div class="card">
+      <img src="pkk.jpg" alt="Berita 4">
+      <div class="card-content">
+        <h2>Lomba PKK Desa Baron Meriahkan HUT ke-80 RI</h2>
+        <p>Dalam rangka HUT RI ke-80, ibu-ibu PKK Desa Baron menggelar lomba di balai desa. 
+           Acara berlangsung meriah dengan kolaborasi mahasiswa KKN Universitas Qomaruddin sebagai panitia.
+           Kegiatan ini menjadi momen kebersamaan, mempererat silaturahmi, serta menumbuhkan semangat gotong royong dan nasionalisme warga.</p>
+      </div>
+    </div>
+
+     <div class="card">
+      <img src="mengajar.jpg" alt="Berita 5">
+      <div class="card-content">
+        <h2>Kegiatan KKN Universitas Qomaruddin di Desa Baron</h2>
+        <p>Mahasiswa KKN Universitas Qomaruddin melaksanakan kegiatan mengajar di berbagai lembaga pendidikan Desa Baron, mulai dari SD, MI, TPQ hingga Madin. Kegiatan ini mencakup pembelajaran, permainan edukatif, 
+           dan motivasi yang disambut antusias oleh para siswa. Program ini tidak hanya menambah semangat belajar anak-anak, tetapi juga mempererat hubungan mahasiswa dengan masyarakat dan lembaga pendidikan setempat.</p>
+      </div>
+    </div>
+
+    <!-- Tambah kartu lain kalau ada -->
+
+  </div> <!-- penutup news-grid -->
+</section>
+
+  <br>
+  <section id="Demografi" class="max-w-6xl mx-auto px-4 py-10">
+   <h2 class="text-center font-semibold text-[#1E293B] text-base mb-3 relative inline-block">
+    Data Demografi
+    <span class="text-[#2563EB]">
+    </span>
+    <span class="block h-[2px] w-10 bg-[#2563EB] mx-auto mt-1">
+    </span>
+   </h2>
+   <div class="flex flex-wrap justify-center gap-6 mb-8">
+    <div class="flex items-center gap-3 bg-white rounded-lg shadow-sm px-5 py-4 min-w-[180px]">
+     <div class="bg-[#BFDBFE] p-2 rounded-md flex justify-center items-center" style="width: 32px; height: 32px">
+      <img alt="Icon representing total population" class="w-4 h-4" height="16" src="https://storage.googleapis.com/a1aa/image/eb251d01-0852-4a9e-630a-4a64916ff992.jpg" width="16"/>
+     </div>
+     <div>
+      <p class="text-sm font-semibold text-[#1E293B] leading-none">
+       2,464
+      </p>
+      <p class="text-[9px] text-[#475569] mt-0.5">
+       Total Penduduk
+      </p>
+     </div>
+    </div>
+    <div class="flex items-center gap-3 bg-white rounded-lg shadow-sm px-5 py-4 min-w-[180px]">
+     <div class="bg-[#D1FAE5] p-2 rounded-md flex justify-center items-center" style="width: 32px; height: 32px">
+      <img alt="Icon representing male population" class="w-4 h-4" height="16" src="https://storage.googleapis.com/a1aa/image/a7708241-5fdd-4a3c-6afe-e3f8fb76238e.jpg" width="16"/>
+     </div>
+     <div>
+      <p class="text-sm font-semibold text-[#1E293B] leading-none">
+       1,246
+      </p>
+      <p class="text-[9px] text-[#475569] mt-0.5">
+       Laki-laki
+      </p>
+     </div>
+    </div>
+    <div class="flex items-center gap-3 bg-white rounded-lg shadow-sm px-5 py-4 min-w-[180px]">
+     <div class="bg-[#FBCFE8] p-2 rounded-md flex justify-center items-center" style="width: 32px; height: 32px">
+      <img alt="Icon representing female population" class="w-4 h-4" height="16" src="https://storage.googleapis.com/a1aa/image/cc3a57de-31c4-400c-31e0-5137e5d24d39.jpg" width="16"/>
+     </div>
+     <div>
+      <p class="text-sm font-semibold text-[#1E293B] leading-none">
+       1,218
+      </p>
+      <p class="text-[9px] text-[#475569] mt-0.5">
+       Perempuan
+      </p>
+     </div>
+    </div>
+    <div class="flex items-center gap-3 bg-white rounded-lg shadow-sm px-5 py-4 min-w-[180px]">
+     <div class="bg-[#EDE9FE] p-2 rounded-md flex justify-center items-center" style="width: 32px; height: 32px">
+      <img alt="Icon representing head of family" class="w-4 h-4" height="16" src="https://storage.googleapis.com/a1aa/image/5126e542-04a4-4c13-9dc6-d7166b354353.jpg" width="16"/>
+     </div>
+     <div>
+      <p class="text-sm font-semibold text-[#1E293B] leading-none">
+       465
+      </p>
+      <p class="text-[9px] text-[#475569] mt-0.5">
+       Kepala Keluarga
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="flex flex-col md:flex-row gap-6 mb-6">
+    <div class="bg-white rounded-lg shadow-sm p-4 flex-1 max-w-md md:max-w-none">
+     <p class="text-xs font-semibold text-[#1E293B] mb-3">
+      Pembagian Wilayah
+     </p>
+     <div class="space-y-1">
+      <div class="flex justify-between items-center bg-[#DBEAFE] text-[#2563EB] text-[10px] px-3 py-1 rounded">
+       <span>
+        Baron Selatan
+       </span>
+       <span>
+        3 RW, 7 RT
+       </span>
+      </div>
+      <div class="flex justify-between items-center bg-[#D1FAE5] text-[#10B981] text-[10px] px-3 py-1 rounded">
+       <span>
+        Baron Utara
+       </span>
+       <span>
+        1 RW, 2 RT
+       </span>
+      </div>
+      <div class="flex justify-between items-center bg-[#F9FAFB] text-[#475569] text-[10px] px-3 py-1 rounded">
+       <span>
+        Luas Wilayah
+       </span>
+       <span>
+        510.19 Ha
+       </span>
+      </div>
+     </div>
+    </div>
+    <div class="bg-white rounded-lg shadow-sm p-4 flex-1 max-w-md md:max-w-none">
+     <p class="text-xs font-semibold text-[#1E293B] mb-3">
+      Mata Pencaharian
+     </p>
+     <div class="space-y-2 text-[10px] text-[#1E293B]">
+      <div class="flex items-center justify-between">
+       <span>
+        Petani
+       </span>
+       <div class="flex items-center gap-2 w-24">
+        <div class="h-2 rounded-full w-12 bg-[#22C55E]">
+        </div>
+        <span class="text-[8px] text-[#64748B]">
+         50%
+        </span>
+       </div>
+      </div>
+      <div class="flex items-center justify-between">
+       <span>
+        TKI
+       </span>
+       <div class="flex items-center gap-2 w-24">
+        <div class="h-2 rounded-full w-7 bg-[#3B82F6]">
+        </div>
+        <span class="text-[8px] text-[#64748B]">
+         30%
+        </span>
+       </div>
+      </div>
+      <div class="flex items-center justify-between">
+       <span>
+        Buruh
+       </span>
+       <div class="flex items-center gap-2 w-24">
+        <div class="h-2 rounded-full w-5 bg-[#F97316]">
+        </div>
+        <span class="text-[8px] text-[#64748B]">
+         20%
+        </span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="bg-white rounded-lg shadow-sm p-4 max-w-4xl mx-auto text-[10px] text-[#475569]">
+    <p class="text-[10px] font-semibold text-[#1E293B] mb-3">
+     Batas Wilayah
+    </p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+     <div class="bg-[#DBEAFE] rounded px-2 py-1">
+      <p class="text-[9px] text-[#2563EB] font-semibold mb-0.5">
+       Utara
+      </p>
+      <p class="text-[8px]">
+       Dusun Mojo Petung
+      </p>
+     </div>
+     <div class="bg-[#D1FAE5] rounded px-2 py-1">
+      <p class="text-[9px] text-[#10B981] font-semibold mb-0.5">
+       Selatan
+      </p>
+      <p class="text-[8px]">
+       Dusun Luntas &amp; Banjarrejo
+      </p>
+     </div>
+     <div class="bg-[#FEF3C7] rounded px-2 py-1">
+      <p class="text-[9px] text-[#FBBF24] font-semibold mb-0.5">
+       Timur
+      </p>
+      <p class="text-[8px]">
+       Dusun Brayo &amp; Jrebeng
+      </p>
+     </div>
+     <div class="bg-[#F5F3FF] rounded px-2 py-1">
+      <p class="text-[9px] text-[#A78BFA] font-semibold mb-0.5">
+       Barat
+      </p>
+      <p class="text-[8px]">
+       Dusun Kebonsari
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+
+   <section id="Fasilitas" class="py-12 px-6 md:px-12 lg:px-20">
+    <h2 class="text-center text-gray-900 font-semibold text-lg md:text-xl mb-4">
+      Fasilitas Desa
+    </h2>
+    <div class="w-16 h-1.5 bg-blue-600 mx-auto mb-10 rounded"></div>
+
+    <div class="flex flex-col md:flex-row md:space-x-8 space-y-8 md:space-y-0 max-w-6xl mx-auto">
+      <!-- Left card -->
+      <div class="bg-green-50 rounded-lg p-6 flex-1 max-w-md">
+        <div class="flex items-center mb-6">
+          <div class="bg-green-600 text-white p-3 rounded-md mr-3">
+            <i class="fas fa-building fa-fw"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 text-sm md:text-base">Tempat Ibadah</h3>
+        </div>
+        <div class="space-y-4">
+          <div class="flex items-center justify-between bg-white rounded-md px-4 py-2 text-gray-900 text-xs md:text-sm">
+            <span>Masjid</span>
+            <span class="bg-green-100 text-green-600 text-xs md:text-sm rounded-full px-2 py-0.5">3</span>
+          </div>
+          <div class="flex items-center justify-between bg-white rounded-md px-4 py-2 text-gray-900 text-xs md:text-sm">
+            <span>Musholla</span>
+            <span class="bg-green-100 text-green-600 text-xs md:text-sm rounded-full px-2 py-0.5">3</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right card -->
+      <div class="bg-blue-50 rounded-lg p-6 flex-1 max-w-md">
+        <div class="flex items-center mb-6">
+          <div class="bg-blue-600 text-white p-3 rounded-md mr-3">
+            <i class="fas fa-graduation-cap fa-fw"></i>
+          </div>
+          <h3 class="font-semibold text-gray-900 text-sm md:text-base">Lembaga Pendidikan</h3>
+        </div>
+        <div class="grid grid-cols-2 gap-4 text-center text-gray-900 text-xs md:text-sm">
+          <div class="bg-white rounded-md py-3">
+            <div class="text-blue-600 font-semibold text-lg md:text-xl">1</div>
+            <div class="uppercase">SD</div>
+          </div>
+          <div class="bg-white rounded-md py-3">
+            <div class="text-blue-600 font-semibold text-lg md:text-xl">1</div>
+            <div class="uppercase">MI</div>
+          </div>
+          <div class="bg-white rounded-md py-3">
+            <div class="text-blue-600 font-semibold text-lg md:text-xl">3</div>
+            <div class="uppercase">TPQ</div>
+          </div>
+          <div class="bg-white rounded-md py-3">
+            <div class="text-blue-600 font-semibold text-lg md:text-xl">2</div>
+            <div class="uppercase">TK</div>
+          </div>
+          <div class="bg-white rounded-md py-3">
+            <div class="text-blue-600 font-semibold text-lg md:text-xl">2</div>
+            <div class="uppercase">KOBER</div>
+          </div>
+          <div class="bg-white rounded-md py-3">
+            <div class="text-blue-600 font-semibold text-lg md:text-xl">1</div>
+            <div class="uppercase">MADIN</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <section class="py-12">
+    <div class="max-w-xl mx-auto bg-white rounded-lg shadow-md p-8 text-center">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-600 flex items-center justify-center">
+        <i class="fas fa-user text-white text-xl"></i>
+      </div>
+      <h2 class="font-semibold text-sm mb-1">NURUL YATIM, S.H.I</h2>
+      <a href="#" class="text-xs text-blue-600 mb-3 inline-block">Kepala Desa Baron</a>
+      <p class="text-xs text-gray-600">
+        Memimpin Desa Baron dengan dedikasi untuk kemajuan dan kesejahteraan masyarakat
+      </p>
+    </div>
+  </section>
+
+  <section id="Kontak" class="py-12">
+    <h3 class="text-center text-gray-900 font-semibold text-lg mb-2">Kontak Desa Baron</h3>
+    <div class="w-20 h-1 bg-blue-600 mx-auto mb-10 rounded"></div>
+
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row gap-6 px-4 sm:px-0">
+      <div class="flex-1 bg-blue-100 rounded-lg p-6">
+        <div class="flex items-center mb-4">
+          <div class="w-8 h-8 rounded bg-blue-600 flex items-center justify-center text-white mr-3">
+            <i class="fas fa-map-marker-alt text-sm"></i>
+          </div>
+          <h4 class="font-semibold text-sm">Alamat Kantor Desa</h4>
+        </div>
+         <a href="https://maps.app.goo.gl/LVUkCZsfmomM9mLy9?g_st=ipc" target="_blank" 
+             class="text-blue-600 font-semibold hover:underline">
+              📍 Lihat di Google Maps
+          </a>
+        <p class="text-xs text-gray-700 leading-relaxed">
+          Jln. Singobarong No. 014<br />
+          RT. 001 RW. 001 Desa Baron<br />
+          Kec. Dukun Kab. Gresik<br />
+          Provinsi Jawa Timur<br />
+          <span class="font-semibold text-xs">Kode Pos: 61155</span>
+        </p>
+      </div>
+
+      <div class="flex-1 bg-green-100 rounded-lg p-6">
+        <div class="flex items-center mb-4">
+          <div class="w-8 h-8 rounded bg-green-600 flex items-center justify-center text-white mr-3">
+            <i class="fas fa-envelope text-sm"></i>
+          </div>
+          <h4 class="font-semibold text-sm">Hubungi Kami</h4>
+        </div>
+        <p class="text-xs text-green-700 flex items-center gap-2 mb-2">
+          <i class="fas fa-envelope-open-text text-xs"></i>
+          pemdesbaron@gmail.com
+        </p>
+        <p class="text-xs text-green-700 flex items-center gap-2">
+          <i class="fas fa-phone-alt text-xs"></i>
+          085648908869
+        </p>
+      </div>
+    </div>
+  </section>
+
+    <footer class="bg-[#1e2a3a] text-center py-6 rounded-t-lg">
+    <div class="flex flex-col items-center gap-1">
+      <div class="flex items-center gap-3">
+        <div
+          class="flex items-center justify-center rounded-full bg-[#0a3a8f] text-white font-semibold w-8 h-8 text-sm"
+        >
+          DB
+        </div>
+        <div class="text-white text-xs font-semibold leading-tight">
+          Desa Baron
+          <div class="text-[#a0aec0] font-normal text-[10px] leading-none">
+            Kec. Dukun, Kab. Gresik
+          </div>
+        </div>
+      </div>
+      <div class="text-[#a0aec0] text-[10px] font-normal mt-1">
+        © 2024 Desa Baron. Semua hak cipta dilindungi.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
